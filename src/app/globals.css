@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-void-950 text-cream-100 antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-void-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-500/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gold-500/50;
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-cream-50 mb-4;
+  }
+
+  .section-subheading {
+    @apply text-lg text-cream-300 max-w-2xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           bg-gradient-to-r from-gold-500 to-gold-600 text-void-950 font-semibold rounded-lg
+           hover:from-gold-400 hover:to-gold-500 transition-all duration-300
+           shadow-lg shadow-gold-500/20 hover:shadow-gold-500/40
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-void-950;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           border border-gold-500/30 text-gold-400 font-medium rounded-lg
+           hover:bg-gold-500/10 hover:border-gold-500/50 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-void-950;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(212, 168, 67, 0.5), 0 0 40px rgba(212, 168, 67, 0.3);
+  }
+
+  .glow-box {
+    box-shadow: 0 0 30px rgba(212, 168, 67, 0.15), inset 0 0 30px rgba(212, 168, 67, 0.05);
+  }
+
+  .card-futuristic {
+    @apply bg-void-900/50 backdrop-blur-sm border border-gold-500/10 rounded-xl
+           hover:border-gold-500/30 hover:bg-void-900/80 transition-all duration-300;
+  }
+
+  .gradient-border {
+    background: linear-gradient(var(--void-900), var(--void-900)) padding-box,
+                linear-gradient(135deg, rgba(212, 168, 67, 0.5), rgba(196, 92, 62, 0.5)) border-box;
+    border: 1px solid transparent;
+  }
+}
+
+/* Animated gradient background */
+.animated-bg {
+  background:
+    radial-gradient(ellipse at top, rgba(212, 168, 67, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(196, 92, 62, 0.08) 0%, transparent 50%),
+    linear-gradient(to bottom, #0d0d0f, #1a1a1e);
+}
