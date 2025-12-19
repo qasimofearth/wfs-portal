@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,86 +9,127 @@ html {
 }
 
 body {
-  @apply bg-parchment-50 text-stone-800 antialiased;
+  @apply bg-stone-950 text-stone-100 antialiased;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Refined scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-stone-100;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-stone-300 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-stone-400;
-}
-
 ::selection {
-  @apply bg-primary-blue/20 text-primary-blue;
+  @apply bg-primary-gold/30 text-white;
 }
 
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
   .heading-display {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    @apply text-stone-900 font-semibold tracking-tight;
+    @apply text-white font-semibold tracking-tight;
   }
 
   .text-body {
-    @apply text-stone-600 leading-relaxed;
+    @apply text-stone-400 leading-relaxed;
+  }
+
+  .text-mono {
+    font-family: 'Space Mono', monospace;
   }
 
   .btn-primary {
     @apply inline-flex items-center justify-center px-8 py-4
-           bg-primary-blue text-white font-medium
-           hover:bg-primary-blue/90 transition-all duration-300
-           border-0;
+           bg-primary-gold text-stone-950 font-semibold
+           hover:bg-primary-gold/90 transition-all duration-300;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-8 py-4
-           bg-transparent text-primary-blue font-medium
-           border-2 border-primary-blue
-           hover:bg-primary-blue hover:text-white transition-all duration-300;
-  }
-
-  .card-minimal {
-    @apply bg-white border border-stone-200
-           hover:border-stone-300 hover:shadow-lg
-           transition-all duration-500;
+           bg-transparent text-primary-gold font-semibold
+           border border-primary-gold/50
+           hover:bg-primary-gold/10 hover:border-primary-gold transition-all duration-300;
   }
 
   .divider {
-    @apply w-16 h-px bg-primary-yellow mx-auto;
+    @apply w-24 h-px bg-gradient-to-r from-transparent via-primary-gold to-transparent mx-auto;
   }
 
-  .link-underline {
-    @apply relative;
-  }
-
-  .link-underline::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-px bg-primary-blue
-           transition-all duration-300;
-  }
-
-  .link-underline:hover::after {
-    @apply w-full;
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl
+           hover:bg-white/10 hover:border-white/20 transition-all duration-500;
   }
 }
 
-/* Sacred geometry inspired decorative element */
-.sacred-circle {
-  border: 1px solid currentColor;
+/* Stars background */
+.stars-bg {
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, white, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, white, transparent),
+    radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 230px 80px, white, transparent),
+    radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 350px 200px, white, transparent),
+    radial-gradient(1px 1px at 400px 50px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(2px 2px at 450px 180px, white, transparent),
+    radial-gradient(1px 1px at 500px 100px, rgba(255,255,255,0.8), transparent);
+  background-size: 550px 250px;
+  animation: stars-move 100s linear infinite;
+}
+
+@keyframes stars-move {
+  from { background-position: 0 0; }
+  to { background-position: 550px 250px; }
+}
+
+/* Orbit animation */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+
+.orbit-path {
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  animation: orbit var(--orbit-speed) linear infinite;
+  margin-left: calc(var(--orbit-radius) * -1);
+  margin-top: -20px;
+}
+
+/* Glow effects */
+.glow-gold {
+  box-shadow: 0 0 40px rgba(212, 168, 67, 0.3), 0 0 80px rgba(212, 168, 67, 0.1);
+}
+
+.glow-soft {
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }

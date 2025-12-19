@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="py-16 bg-stone-900 text-stone-400">
+    <footer className="py-16 bg-stone-950 border-t border-white/5">
       <div className="section-container">
         <div className="flex flex-col items-center text-center">
           <Image
@@ -15,12 +15,12 @@ export default function Footer() {
             className="mb-6 opacity-60"
           />
 
-          <p className="heading-display text-white text-lg mb-4">
+          <p className="heading-display text-primary-gold text-lg mb-2">
             Wisdom Frontiers Society
           </p>
 
-          <p className="text-sm">
-            © {currentYear}
+          <p className="text-mono text-xs text-stone-600 tracking-wider">
+            © {currentYear} · Exploring infinite frontiers
           </p>
         </div>
       </div>

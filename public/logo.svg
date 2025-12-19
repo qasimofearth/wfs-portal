@@ -1,38 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 220" fill="none">
-  <!-- Wheat/Fern Symbol - terracotta red -->
-  <g stroke="#C45C3E" stroke-width="3.5" stroke-linecap="round" fill="none">
-    <!-- Center stem -->
-    <path d="M120 28 L120 95"/>
-    <!-- Leaves - 7 pairs, curving outward with rounded ends -->
-    <path d="M120 32 C110 28, 100 28, 88 34"/>
-    <path d="M120 32 C130 28, 140 28, 152 34"/>
-    <path d="M120 40 C108 36, 96 36, 82 44"/>
-    <path d="M120 40 C132 36, 144 36, 158 44"/>
-    <path d="M120 48 C106 44, 92 44, 76 54"/>
-    <path d="M120 48 C134 44, 148 44, 164 54"/>
-    <path d="M120 56 C104 52, 88 52, 70 64"/>
-    <path d="M120 56 C136 52, 152 52, 170 64"/>
-    <path d="M120 64 C102 60, 84 60, 64 74"/>
-    <path d="M120 64 C138 60, 156 60, 176 74"/>
-    <path d="M120 72 C100 68, 80 68, 58 84"/>
-    <path d="M120 72 C140 68, 160 68, 182 84"/>
-    <path d="M120 80 C98 76, 76 78, 54 94"/>
-    <path d="M120 80 C142 76, 164 78, 186 94"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Outer circle -->
+  <circle cx="50" cy="50" r="48" stroke="#D4A843" stroke-width="1" fill="none" opacity="0.6"/>
+
+  <!-- Inner circle -->
+  <circle cx="50" cy="50" r="35" stroke="#D4A843" stroke-width="1" fill="none" opacity="0.4"/>
+
+  <!-- Center eye/sun -->
+  <circle cx="50" cy="50" r="12" fill="#D4A843"/>
+  <circle cx="50" cy="50" r="6" fill="#0f0e0d"/>
+  <circle cx="50" cy="50" r="2" fill="#D4A843"/>
+
+  <!-- Rays/Wheat abstraction -->
+  <g stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" opacity="0.8">
+    <line x1="50" y1="15" x2="50" y2="25"/>
+    <line x1="50" y1="75" x2="50" y2="85"/>
+    <line x1="15" y1="50" x2="25" y2="50"/>
+    <line x1="75" y1="50" x2="85" y2="50"/>
+
+    <!-- Diagonal rays -->
+    <line x1="22" y1="22" x2="30" y2="30"/>
+    <line x1="78" y1="22" x2="70" y2="30"/>
+    <line x1="22" y1="78" x2="30" y2="70"/>
+    <line x1="78" y1="78" x2="70" y2="70"/>
   </g>
 
-  <!-- Infinity Symbol - gold/mustard -->
-  <path d="M78 105 C78 92, 95 92, 120 105 C145 118, 162 118, 162 105 C162 92, 145 92, 120 105 C95 118, 78 118, 78 105"
-        stroke="#D4A843" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- WFS Text - 3D effect with shadow -->
-  <!-- Shadow/outline layer -->
-  <text x="120" y="165" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="58" font-weight="900" fill="#C45C3E" letter-spacing="2">
-    <tspan dx="3" dy="3">WFS</tspan>
-  </text>
-  <!-- Main gold text -->
-  <text x="120" y="165" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="58" font-weight="900" fill="#D4A843" letter-spacing="2">WFS</text>
-
-  <!-- WISDOM FRONTIERS SOCIETY text -->
-  <text x="120" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#C45C3E" letter-spacing="3">WISDOM FRONTIERS</text>
-  <text x="120" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#C45C3E" letter-spacing="3">SOCIETY</text>
+  <!-- Infinity symbol hint in center ring -->
+  <path d="M38 50 C38 44, 44 44, 50 50 C56 56, 62 56, 62 50 C62 44, 56 44, 50 50 C44 56, 38 56, 38 50"
+        stroke="#D4A843" stroke-width="1" fill="none" opacity="0.5"/>
 </svg>
