@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,128 +9,86 @@ html {
 }
 
 body {
-  @apply bg-void-950 text-white antialiased;
+  @apply bg-parchment-50 text-stone-800 antialiased;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Custom scrollbar */
+/* Refined scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-void-900;
+  @apply bg-stone-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-neon-blue/30 rounded-full;
+  @apply bg-stone-300 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-neon-blue/50;
+  @apply bg-stone-400;
+}
+
+::selection {
+  @apply bg-primary-blue/20 text-primary-blue;
 }
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
-  .section-heading {
-    @apply text-4xl md:text-5xl font-bold text-white mb-6;
-    font-family: 'Orbitron', sans-serif;
+  .heading-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    @apply text-stone-900 font-semibold tracking-tight;
   }
 
-  .section-subheading {
-    @apply text-lg text-void-300 max-w-2xl leading-relaxed;
+  .text-body {
+    @apply text-stone-600 leading-relaxed;
   }
 
   .btn-primary {
     @apply inline-flex items-center justify-center px-8 py-4
-           bg-gradient-to-r from-hyper-500 to-neon-blue text-void-950 font-bold rounded-xl
-           hover:from-hyper-400 hover:to-cyan-300 transition-all duration-300
-           shadow-neon hover:shadow-neon-lg
-           focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 focus:ring-offset-void-950
-           uppercase tracking-wider text-sm;
-    font-family: 'Orbitron', sans-serif;
+           bg-primary-blue text-white font-medium
+           hover:bg-primary-blue/90 transition-all duration-300
+           border-0;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-8 py-4
-           border-2 border-neon-blue/50 text-neon-blue font-bold rounded-xl
-           hover:bg-neon-blue/10 hover:border-neon-blue transition-all duration-300
-           focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 focus:ring-offset-void-950
-           uppercase tracking-wider text-sm;
-    font-family: 'Orbitron', sans-serif;
+           bg-transparent text-primary-blue font-medium
+           border-2 border-primary-blue
+           hover:bg-primary-blue hover:text-white transition-all duration-300;
   }
 
-  .glow-text {
-    text-shadow: 0 0 20px rgba(0, 240, 255, 0.8), 0 0 40px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.3);
+  .card-minimal {
+    @apply bg-white border border-stone-200
+           hover:border-stone-300 hover:shadow-lg
+           transition-all duration-500;
   }
 
-  .glow-text-purple {
-    text-shadow: 0 0 20px rgba(191, 0, 255, 0.8), 0 0 40px rgba(191, 0, 255, 0.5);
+  .divider {
+    @apply w-16 h-px bg-primary-yellow mx-auto;
   }
 
-  .glow-box {
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.15), inset 0 1px 0 rgba(0, 240, 255, 0.1);
+  .link-underline {
+    @apply relative;
   }
 
-  .card-cyber {
-    @apply bg-void-900/60 backdrop-blur-md border border-neon-blue/20 rounded-2xl
-           hover:border-neon-blue/50 transition-all duration-500 relative overflow-hidden;
-  }
-
-  .card-cyber::before {
+  .link-underline::after {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 transition-opacity duration-500;
+    @apply absolute bottom-0 left-0 w-0 h-px bg-primary-blue
+           transition-all duration-300;
   }
 
-  .card-cyber:hover::before {
-    @apply opacity-100;
-  }
-
-  .icon-cyber {
-    @apply w-16 h-16 rounded-2xl flex items-center justify-center text-3xl
-           bg-gradient-to-br from-hyper-500/20 to-neon-blue/20 border border-neon-blue/30
-           shadow-neon transition-all duration-300;
-  }
-
-  .tag-cyber {
-    @apply px-3 py-1.5 text-xs font-semibold rounded-lg
-           bg-neon-blue/10 text-neon-blue border border-neon-blue/30
-           uppercase tracking-wider;
-    font-family: 'JetBrains Mono', monospace;
+  .link-underline:hover::after {
+    @apply w-full;
   }
 }
 
-/* Animated gradient background */
-.animated-bg {
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 70%),
-    linear-gradient(to bottom, #0a1929, #0a1628);
-}
-
-/* Scanline effect */
-.scanlines::after {
-  content: '';
-  @apply absolute inset-0 pointer-events-none;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.1) 0px,
-    rgba(0, 0, 0, 0.1) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-}
-
-/* Glowing border animation */
-@keyframes border-glow {
-  0%, 100% { border-color: rgba(0, 240, 255, 0.3); }
-  50% { border-color: rgba(0, 240, 255, 0.6); }
-}
-
-.animate-border-glow {
-  animation: border-glow 2s ease-in-out infinite;
+/* Sacred geometry inspired decorative element */
+.sacred-circle {
+  border: 1px solid currentColor;
+  border-radius: 50%;
 }
