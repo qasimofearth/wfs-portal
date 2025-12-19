@@ -1,32 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" fill="none">
-  <!-- Wheat/Fern Symbol -->
-  <g stroke="#C45C3E" stroke-width="3" stroke-linecap="round" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 220" fill="none">
+  <!-- Wheat/Fern Symbol - terracotta red -->
+  <g stroke="#C45C3E" stroke-width="3.5" stroke-linecap="round" fill="none">
     <!-- Center stem -->
-    <path d="M100 45 L100 85"/>
-    <!-- Leaves - alternating sides -->
-    <path d="M100 50 Q85 45 75 50"/>
-    <path d="M100 50 Q115 45 125 50"/>
-    <path d="M100 55 Q82 50 70 55"/>
-    <path d="M100 55 Q118 50 130 55"/>
-    <path d="M100 60 Q80 55 65 62"/>
-    <path d="M100 60 Q120 55 135 62"/>
-    <path d="M100 65 Q78 60 62 68"/>
-    <path d="M100 65 Q122 60 138 68"/>
-    <path d="M100 70 Q75 65 58 75"/>
-    <path d="M100 70 Q125 65 142 75"/>
-    <path d="M100 75 Q72 70 55 82"/>
-    <path d="M100 75 Q128 70 145 82"/>
-    <path d="M100 80 Q70 75 52 88"/>
-    <path d="M100 80 Q130 75 148 88"/>
+    <path d="M120 28 L120 95"/>
+    <!-- Leaves - 7 pairs, curving outward with rounded ends -->
+    <path d="M120 32 C110 28, 100 28, 88 34"/>
+    <path d="M120 32 C130 28, 140 28, 152 34"/>
+    <path d="M120 40 C108 36, 96 36, 82 44"/>
+    <path d="M120 40 C132 36, 144 36, 158 44"/>
+    <path d="M120 48 C106 44, 92 44, 76 54"/>
+    <path d="M120 48 C134 44, 148 44, 164 54"/>
+    <path d="M120 56 C104 52, 88 52, 70 64"/>
+    <path d="M120 56 C136 52, 152 52, 170 64"/>
+    <path d="M120 64 C102 60, 84 60, 64 74"/>
+    <path d="M120 64 C138 60, 156 60, 176 74"/>
+    <path d="M120 72 C100 68, 80 68, 58 84"/>
+    <path d="M120 72 C140 68, 160 68, 182 84"/>
+    <path d="M120 80 C98 76, 76 78, 54 94"/>
+    <path d="M120 80 C142 76, 164 78, 186 94"/>
   </g>
 
-  <!-- Infinity Symbol -->
-  <path d="M70 95 C70 85 85 85 100 95 C115 105 130 105 130 95 C130 85 115 85 100 95 C85 105 70 105 70 95"
-        stroke="#D4A843" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Infinity Symbol - gold/mustard -->
+  <path d="M78 105 C78 92, 95 92, 120 105 C145 118, 162 118, 162 105 C162 92, 145 92, 120 105 C95 118, 78 118, 78 105"
+        stroke="#D4A843" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- WFS Text -->
-  <text x="100" y="135" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="42" font-weight="900">
-    <tspan fill="#C45C3E" dx="2" dy="2">WFS</tspan>
+  <!-- WFS Text - 3D effect with shadow -->
+  <!-- Shadow/outline layer -->
+  <text x="120" y="165" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="58" font-weight="900" fill="#C45C3E" letter-spacing="2">
+    <tspan dx="3" dy="3">WFS</tspan>
   </text>
-  <text x="100" y="135" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="42" font-weight="900" fill="#D4A843">WFS</text>
+  <!-- Main gold text -->
+  <text x="120" y="165" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="58" font-weight="900" fill="#D4A843" letter-spacing="2">WFS</text>
+
+  <!-- WISDOM FRONTIERS SOCIETY text -->
+  <text x="120" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#C45C3E" letter-spacing="3">WISDOM FRONTIERS</text>
+  <text x="120" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#C45C3E" letter-spacing="3">SOCIETY</text>
 </svg>

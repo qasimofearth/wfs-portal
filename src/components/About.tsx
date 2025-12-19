@@ -2,59 +2,58 @@ export default function About() {
   const pillars = [
     {
       title: 'Ancient Wisdom',
-      description:
-        'We draw from the wellspring of human knowledge—philosophies, practices, and insights refined over millennia.',
+      description: 'Knowledge refined over millennia. Stoicism, Eastern philosophy, indigenous traditions—encoded into digital experiences.',
       icon: '📜',
-      color: '#D4A843',
     },
     {
-      title: 'Modern Innovation',
-      description:
-        'We harness cutting-edge technology to make timeless wisdom accessible, interactive, and applicable.',
+      title: 'Future Tech',
+      description: 'AI, biometrics, neural interfaces. We build at the bleeding edge to make the timeless accessible.',
+      icon: '🔮',
+    },
+    {
+      title: 'Human Potential',
+      description: 'Every tool expands what\'s possible. Cognitive enhancement, cellular optimization, consciousness exploration.',
       icon: '⚡',
-      color: '#C45C3E',
-    },
-    {
-      title: 'Infinite Growth',
-      description:
-        'Like the infinity symbol in our logo, we believe in boundless potential for human understanding and evolution.',
-      icon: '∞',
-      color: '#A78BFA',
     },
   ]
 
   return (
-    <section id="about" className="py-24 bg-void-950 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold-500/5 to-transparent"></div>
+    <section id="about" className="py-24 bg-void-900/50 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute top-0 left-0 w-full h-full bg-cyber-grid opacity-10"></div>
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-neon-purple/10 rounded-full blur-[150px]"></div>
 
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
           <div>
             <h2 className="section-heading">
-              About <span className="text-gold-500">WFS</span>
+              <span className="text-neon-blue glow-text">//</span> About
             </h2>
-            <p className="text-cream-300 text-lg leading-relaxed mb-6">
-              The Wisdom Frontiers Society exists at the intersection of ancient
-              knowledge and future possibility. We believe that the deepest
-              truths of human existence have been discovered many times over, but
-              each generation must find new ways to access and apply them.
+            <p className="text-void-300 text-lg leading-relaxed mb-6">
+              The Wisdom Frontiers Society is a collective of scientists, explorers,
+              and builders working at the intersection of ancient wisdom and emerging
+              technology.
             </p>
-            <p className="text-cream-400 leading-relaxed mb-8">
-              Our apps are not mere tools—they are portals. Each one is designed
-              to help you explore a different frontier of wisdom, whether it&apos;s
-              the stoic philosophy of ancient Rome, the breathing techniques of
-              Himalayan masters, or the financial principles of history&apos;s
-              greatest wealth builders.
+            <p className="text-void-400 leading-relaxed mb-8">
+              We believe the deepest truths of human existence have been discovered
+              countless times across cultures and centuries. Our mission is to build
+              modern interfaces to this timeless knowledge—tools that help you think
+              clearer, heal faster, and reach further.
             </p>
 
             {/* Mission quote */}
-            <div className="card-futuristic p-6 glow-box">
-              <blockquote className="text-xl text-cream-200 italic">
-                &ldquo;The only true wisdom is in knowing you know nothing.&rdquo;
+            <div className="card-cyber p-8 glow-box">
+              <div className="text-neon-blue text-4xl mb-4" style={{ fontFamily: 'serif' }}>"</div>
+              <blockquote className="text-xl text-white italic leading-relaxed">
+                The frontier is not a place. It&apos;s the edge of what you know.
               </blockquote>
-              <cite className="block mt-3 text-gold-500 font-medium">— Socrates</cite>
+              <cite
+                className="block mt-4 text-neon-blue font-semibold uppercase tracking-wider"
+                style={{ fontFamily: 'Orbitron, sans-serif' }}
+              >
+                — WFS Manifesto
+              </cite>
             </div>
           </div>
 
@@ -63,23 +62,19 @@ export default function About() {
             {pillars.map((pillar, index) => (
               <div
                 key={pillar.title}
-                className="card-futuristic p-6 flex gap-5 group"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="card-cyber p-6 flex gap-6 group"
               >
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 transition-transform group-hover:scale-110"
-                  style={{
-                    backgroundColor: `${pillar.color}15`,
-                    boxShadow: `0 0 20px ${pillar.color}15`,
-                  }}
-                >
+                <div className="icon-cyber flex-shrink-0 group-hover:shadow-neon-lg">
                   {pillar.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-cream-50 mb-1 group-hover:text-gold-400 transition-colors">
+                  <h3
+                    className="text-xl font-bold text-white mb-2 group-hover:text-neon-blue transition-colors"
+                    style={{ fontFamily: 'Orbitron, sans-serif' }}
+                  >
                     {pillar.title}
                   </h3>
-                  <p className="text-cream-400 text-sm leading-relaxed">
+                  <p className="text-void-400 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,12 +9,13 @@ html {
 }
 
 body {
-  @apply bg-void-950 text-cream-100 antialiased;
+  @apply bg-void-950 text-white antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -20,65 +23,114 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gold-500/30 rounded-full;
+  @apply bg-neon-blue/30 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gold-500/50;
+  @apply bg-neon-blue/50;
 }
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold text-cream-50 mb-4;
+    @apply text-4xl md:text-5xl font-bold text-white mb-6;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .section-subheading {
-    @apply text-lg text-cream-300 max-w-2xl;
+    @apply text-lg text-void-300 max-w-2xl leading-relaxed;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3
-           bg-gradient-to-r from-gold-500 to-gold-600 text-void-950 font-semibold rounded-lg
-           hover:from-gold-400 hover:to-gold-500 transition-all duration-300
-           shadow-lg shadow-gold-500/20 hover:shadow-gold-500/40
-           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-void-950;
+    @apply inline-flex items-center justify-center px-8 py-4
+           bg-gradient-to-r from-hyper-500 to-neon-blue text-void-950 font-bold rounded-xl
+           hover:from-hyper-400 hover:to-cyan-300 transition-all duration-300
+           shadow-neon hover:shadow-neon-lg
+           focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 focus:ring-offset-void-950
+           uppercase tracking-wider text-sm;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3
-           border border-gold-500/30 text-gold-400 font-medium rounded-lg
-           hover:bg-gold-500/10 hover:border-gold-500/50 transition-all duration-300
-           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-void-950;
+    @apply inline-flex items-center justify-center px-8 py-4
+           border-2 border-neon-blue/50 text-neon-blue font-bold rounded-xl
+           hover:bg-neon-blue/10 hover:border-neon-blue transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 focus:ring-offset-void-950
+           uppercase tracking-wider text-sm;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .glow-text {
-    text-shadow: 0 0 20px rgba(212, 168, 67, 0.5), 0 0 40px rgba(212, 168, 67, 0.3);
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.8), 0 0 40px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.3);
+  }
+
+  .glow-text-purple {
+    text-shadow: 0 0 20px rgba(191, 0, 255, 0.8), 0 0 40px rgba(191, 0, 255, 0.5);
   }
 
   .glow-box {
-    box-shadow: 0 0 30px rgba(212, 168, 67, 0.15), inset 0 0 30px rgba(212, 168, 67, 0.05);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.15), inset 0 1px 0 rgba(0, 240, 255, 0.1);
   }
 
-  .card-futuristic {
-    @apply bg-void-900/50 backdrop-blur-sm border border-gold-500/10 rounded-xl
-           hover:border-gold-500/30 hover:bg-void-900/80 transition-all duration-300;
+  .card-cyber {
+    @apply bg-void-900/60 backdrop-blur-md border border-neon-blue/20 rounded-2xl
+           hover:border-neon-blue/50 transition-all duration-500 relative overflow-hidden;
   }
 
-  .gradient-border {
-    background: linear-gradient(var(--void-900), var(--void-900)) padding-box,
-                linear-gradient(135deg, rgba(212, 168, 67, 0.5), rgba(196, 92, 62, 0.5)) border-box;
-    border: 1px solid transparent;
+  .card-cyber::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 transition-opacity duration-500;
+  }
+
+  .card-cyber:hover::before {
+    @apply opacity-100;
+  }
+
+  .icon-cyber {
+    @apply w-16 h-16 rounded-2xl flex items-center justify-center text-3xl
+           bg-gradient-to-br from-hyper-500/20 to-neon-blue/20 border border-neon-blue/30
+           shadow-neon transition-all duration-300;
+  }
+
+  .tag-cyber {
+    @apply px-3 py-1.5 text-xs font-semibold rounded-lg
+           bg-neon-blue/10 text-neon-blue border border-neon-blue/30
+           uppercase tracking-wider;
+    font-family: 'JetBrains Mono', monospace;
   }
 }
 
 /* Animated gradient background */
 .animated-bg {
   background:
-    radial-gradient(ellipse at top, rgba(212, 168, 67, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(196, 92, 62, 0.08) 0%, transparent 50%),
-    linear-gradient(to bottom, #0d0d0f, #1a1a1e);
+    radial-gradient(ellipse at 20% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 70%),
+    linear-gradient(to bottom, #0a1929, #0a1628);
+}
+
+/* Scanline effect */
+.scanlines::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* Glowing border animation */
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(0, 240, 255, 0.3); }
+  50% { border-color: rgba(0, 240, 255, 0.6); }
+}
+
+.animate-border-glow {
+  animation: border-glow 2s ease-in-out infinite;
 }

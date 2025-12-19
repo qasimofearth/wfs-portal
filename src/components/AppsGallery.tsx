@@ -16,85 +16,83 @@ export default function AppsGallery({ selectedCategory }: AppsGalleryProps) {
     categories.find((c) => c.id === categoryId)
 
   return (
-    <section id="apps" className="py-20 bg-void-900/30">
-      <div className="section-container">
-        <div className="text-center mb-12">
+    <section id="apps" className="py-24 bg-void-950 relative">
+      {/* Background accent */}
+      <div className="absolute inset-0 bg-cyber-grid opacity-20"></div>
+
+      <div className="section-container relative z-10">
+        <div className="text-center mb-16">
           <h2 className="section-heading">
-            Our <span className="text-gold-500">Apps</span>
+            <span className="text-neon-blue glow-text">[</span> APPS <span className="text-neon-blue glow-text">]</span>
           </h2>
           <p className="section-subheading mx-auto">
-            Tools crafted to illuminate your journey through the frontiers of wisdom.
+            Portals to expanded consciousness. Each app is a gateway to a different frontier.
           </p>
         </div>
 
         {filteredApps.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-cream-400 text-lg">No apps in this category yet. Coming soon.</p>
+          <div className="text-center py-20">
+            <div className="text-6xl mb-6">🔮</div>
+            <p className="text-void-400 text-lg" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+              Coming soon to this frontier...
+            </p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredApps.map((app) => {
               const category = getCategory(app.category)
               return (
                 <div
                   key={app.id}
-                  className={`group card-futuristic p-6 relative overflow-hidden ${
-                    app.featured ? 'ring-1 ring-gold-500/30' : ''
+                  className={`group card-cyber p-8 ${
+                    app.featured ? 'ring-2 ring-neon-blue/50 shadow-neon' : ''
                   }`}
                 >
                   {/* Featured badge */}
                   {app.featured && (
-                    <div className="absolute top-4 right-4">
-                      <span className="px-2 py-1 text-xs font-semibold bg-gold-500/20 text-gold-400 rounded-full border border-gold-500/30">
-                        Featured
+                    <div className="absolute top-6 right-6">
+                      <span
+                        className="px-3 py-1.5 text-xs font-bold bg-neon-blue text-void-950 rounded-lg uppercase tracking-wider"
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                      >
+                        Live
                       </span>
                     </div>
                   )}
 
-                  {/* Glow effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
                   {/* App Icon */}
-                  <div className="relative">
-                    <div
-                      className="w-16 h-16 rounded-xl flex items-center justify-center text-3xl mb-4 transition-transform group-hover:scale-110"
-                      style={{
-                        backgroundColor: `${category?.color}15`,
-                        boxShadow: `0 0 20px ${category?.color}20`,
-                      }}
-                    >
+                  <div className="mb-6">
+                    <div className="icon-cyber group-hover:scale-110 group-hover:shadow-neon-lg">
                       {app.icon}
                     </div>
                   </div>
 
                   {/* App Info */}
-                  <h3 className="text-xl font-semibold text-cream-50 mb-2 group-hover:text-gold-400 transition-colors">
+                  <h3
+                    className="text-2xl font-bold text-white mb-3 group-hover:text-neon-blue transition-colors"
+                    style={{ fontFamily: 'Orbitron, sans-serif' }}
+                  >
                     {app.name}
                   </h3>
 
                   {/* Category tag */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <span
-                      className="text-xs font-medium px-2 py-0.5 rounded-full"
-                      style={{
-                        backgroundColor: `${category?.color}20`,
-                        color: category?.color,
-                      }}
-                    >
-                      {category?.name}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="tag-cyber">
+                      {category?.icon} {category?.name}
                     </span>
                   </div>
 
-                  <p className="text-cream-400 mb-4 leading-relaxed text-sm">
+                  <p className="text-void-400 mb-6 leading-relaxed">
                     {app.description}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {app.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 text-xs font-medium bg-void-800 text-cream-400 rounded-md border border-gold-500/10"
+                        className="px-3 py-1 text-xs font-medium bg-void-800/80 text-void-300 rounded-lg border border-void-700"
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
                       >
                         {tag}
                       </span>
@@ -102,27 +100,28 @@ export default function AppsGallery({ selectedCategory }: AppsGalleryProps) {
                   </div>
 
                   {/* Status & Link */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gold-500/10">
+                  <div className="flex items-center justify-between pt-6 border-t border-neon-blue/10">
                     <span
-                      className={`text-sm font-medium flex items-center gap-1.5 ${
+                      className={`text-sm font-semibold flex items-center gap-2 uppercase tracking-wider ${
                         app.status === 'live'
-                          ? 'text-green-400'
+                          ? 'text-neon-green'
                           : app.status === 'beta'
-                          ? 'text-amber-400'
-                          : 'text-cream-500'
+                          ? 'text-neon-purple'
+                          : 'text-void-500'
                       }`}
+                      style={{ fontFamily: 'JetBrains Mono, monospace' }}
                     >
                       <span
                         className={`w-2 h-2 rounded-full ${
                           app.status === 'live'
-                            ? 'bg-green-400 animate-pulse'
+                            ? 'bg-neon-green animate-pulse'
                             : app.status === 'beta'
-                            ? 'bg-amber-400'
-                            : 'bg-cream-600'
+                            ? 'bg-neon-purple animate-pulse'
+                            : 'bg-void-600'
                         }`}
                       ></span>
                       {app.status === 'live'
-                        ? 'Live'
+                        ? 'Online'
                         : app.status === 'beta'
                         ? 'Beta'
                         : 'Coming Soon'}
@@ -133,11 +132,12 @@ export default function AppsGallery({ selectedCategory }: AppsGalleryProps) {
                         href={app.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-medium text-gold-500 hover:text-gold-400 transition-colors group/link"
+                        className="inline-flex items-center text-sm font-bold text-neon-blue hover:text-white transition-colors group/link uppercase tracking-wider"
+                        style={{ fontFamily: 'Orbitron, sans-serif' }}
                       >
                         Launch
                         <svg
-                          className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform"
+                          className="w-4 h-4 ml-2 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -146,7 +146,7 @@ export default function AppsGallery({ selectedCategory }: AppsGalleryProps) {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                           />
                         </svg>
                       </a>

@@ -8,40 +8,43 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: '#categories', label: 'Explore' },
     { href: '#apps', label: 'Apps' },
     { href: '#about', label: 'About' },
     { href: '#team', label: 'Team' },
   ]
 
   return (
-    <nav className="fixed top-0 w-full bg-void-950/80 backdrop-blur-md border-b border-gold-500/10 z-50">
+    <nav className="fixed top-0 w-full bg-void-950/90 backdrop-blur-xl border-b border-neon-blue/10 z-50">
       <div className="section-container">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link href="/" className="flex items-center space-x-4 group">
             <Image
               src="/logo.svg"
               alt="WFS Logo"
-              width={48}
-              height={48}
+              width={50}
+              height={50}
               className="group-hover:scale-105 transition-transform"
             />
-            <div className="hidden sm:block">
-              <span className="font-bold text-lg text-gold-500 glow-text">WFS</span>
-            </div>
+            <span
+              className="font-bold text-xl text-neon-blue glow-text tracking-wider hidden sm:block"
+              style={{ fontFamily: 'Orbitron, sans-serif' }}
+            >
+              WFS
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-cream-300 hover:text-gold-400 font-medium transition-colors relative group"
+                className="text-void-300 hover:text-neon-blue font-medium transition-all duration-300 relative group uppercase tracking-wider text-sm"
+                style={{ fontFamily: 'Orbitron, sans-serif' }}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-neon-blue shadow-neon group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
@@ -49,7 +52,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gold-500/10 text-cream-200 transition-colors"
+            className="md:hidden p-3 rounded-xl border border-neon-blue/30 hover:bg-neon-blue/10 text-neon-blue transition-all"
             aria-label="Toggle menu"
           >
             <svg
@@ -79,13 +82,14 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-gold-500/10">
+          <div className="md:hidden py-6 border-t border-neon-blue/10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-3 text-cream-300 hover:text-gold-400 font-medium transition-colors"
+                className="block py-4 text-void-300 hover:text-neon-blue font-medium transition-colors uppercase tracking-wider"
+                style={{ fontFamily: 'Orbitron, sans-serif' }}
               >
                 {link.label}
               </a>

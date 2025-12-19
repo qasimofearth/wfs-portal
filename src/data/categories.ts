@@ -3,7 +3,6 @@ export interface Category {
   name: string
   description: string
   icon: string
-  color: string
 }
 
 export const categories: Category[] = [
@@ -11,56 +10,36 @@ export const categories: Category[] = [
     id: 'ancient-wisdom',
     name: 'Ancient Wisdom',
     description: 'Timeless knowledge from civilizations past',
-    icon: '📜',
-    color: '#D4A843',
+    icon: '🏛️',
   },
   {
     id: 'healing',
     name: 'Healing',
-    description: 'Tools for body, mind, and spirit restoration',
-    icon: '🌿',
-    color: '#4ADE80',
+    description: 'Restore body, mind, and spirit',
+    icon: '🧬',
   },
   {
     id: 'mind',
     name: 'Mind',
-    description: 'Expand consciousness and mental clarity',
+    description: 'Expand consciousness and cognition',
     icon: '🧠',
-    color: '#A78BFA',
   },
   {
     id: 'finances',
     name: 'Finances',
-    description: 'Wisdom for abundance and prosperity',
-    icon: '💰',
-    color: '#FBBF24',
+    description: 'Abundance and prosperity protocols',
+    icon: '💎',
   },
   {
     id: 'spirituality',
     name: 'Spirituality',
-    description: 'Connect with the deeper dimensions of existence',
+    description: 'Connect with deeper dimensions',
     icon: '✨',
-    color: '#F472B6',
   },
   {
     id: 'philosophy',
     name: 'Philosophy',
-    description: 'Explore the fundamental nature of reality',
+    description: 'Explore the nature of reality',
     icon: '🔮',
-    color: '#60A5FA',
-  },
-  {
-    id: 'nature',
-    name: 'Nature',
-    description: 'Harmony with the natural world',
-    icon: '🌍',
-    color: '#34D399',
-  },
-  {
-    id: 'creativity',
-    name: 'Creativity',
-    description: 'Unlock your creative potential',
-    icon: '🎨',
-    color: '#FB923C',
   },
 ]

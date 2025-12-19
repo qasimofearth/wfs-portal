@@ -9,85 +9,91 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand colors from logo
-        gold: {
-          50: '#fefcf3',
-          100: '#fdf7e1',
-          200: '#faedc3',
-          300: '#f5dd9a',
-          400: '#eec86a',
-          500: '#D4A843', // Primary gold
-          600: '#c4922a',
-          700: '#a37323',
-          800: '#855c22',
-          900: '#6d4c1f',
-          950: '#3d280e',
+        // Hyper blue futuristic palette
+        hyper: {
+          50: '#eef9ff',
+          100: '#d8f1ff',
+          200: '#b9e8ff',
+          300: '#89dcff',
+          400: '#52c6ff',
+          500: '#2aa7ff',
+          600: '#0d8bf5',
+          700: '#0a73e1',
+          800: '#105cb6',
+          900: '#144e8f',
+          950: '#0a1628',
         },
-        terracotta: {
-          50: '#fdf5f3',
-          100: '#fce8e4',
-          200: '#fad5cd',
-          300: '#f5b8aa',
-          400: '#ed8e79',
-          500: '#C45C3E', // Primary terracotta
-          600: '#b04a30',
-          700: '#933c26',
-          800: '#7a3524',
-          900: '#663124',
-          950: '#37160e',
+        cyber: {
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
         },
-        cream: {
-          50: '#FDFBF7',
-          100: '#F5F0E6', // Background cream
-          200: '#EBE4D6',
-          300: '#DDD3BE',
-          400: '#C9BA9E',
-          500: '#B5A080',
-          600: '#9C8665',
-          700: '#7D6A4F',
-          800: '#5E4F3B',
-          900: '#3F3527',
+        neon: {
+          blue: '#00f0ff',
+          purple: '#bf00ff',
+          pink: '#ff00e5',
+          green: '#00ff88',
         },
-        // Dark futuristic base
         void: {
-          50: '#f6f6f7',
-          100: '#e3e3e5',
-          200: '#c6c6cb',
-          300: '#a2a2a9',
-          400: '#7d7d87',
-          500: '#63636c',
-          600: '#4e4e56',
-          700: '#414147',
-          800: '#37373c',
-          900: '#1a1a1e', // Main dark bg
-          950: '#0d0d0f', // Deeper dark
+          50: '#f0f4f8',
+          100: '#d9e2ec',
+          200: '#bcccdc',
+          300: '#9fb3c8',
+          400: '#829ab1',
+          500: '#627d98',
+          600: '#486581',
+          700: '#334e68',
+          800: '#243b53',
+          900: '#102a43',
+          950: '#0a1929',
         },
       },
       fontFamily: {
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        display: ['Orbitron', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
         'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'shimmer': 'shimmer 2s linear infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'scan': 'scan 2s linear infinite',
       },
       keyframes: {
         'glow-pulse': {
           '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.8' },
+          '50%': { opacity: '1' },
         },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-20px)' },
         },
         'shimmer': {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+        'scan': {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'grid-pattern': `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23D4A843' stroke-opacity='0.08'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        'grid-pattern': `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%2300f0ff' stroke-opacity='0.07'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        'cyber-grid': `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300f0ff' stroke-opacity='0.1'%3E%3Cpath d='M0 20h40M20 0v40'/%3E%3C/g%3E%3C/svg%3E")`,
+      },
+      boxShadow: {
+        'neon': '0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.3)',
+        'neon-lg': '0 0 30px rgba(0, 240, 255, 0.6), 0 0 60px rgba(0, 240, 255, 0.4)',
+        'neon-purple': '0 0 20px rgba(191, 0, 255, 0.5), 0 0 40px rgba(191, 0, 255, 0.3)',
       },
     },
   },

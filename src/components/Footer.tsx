@@ -4,32 +4,38 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-void-950 border-t border-gold-500/10 py-12">
+    <footer className="bg-void-950 border-t border-neon-blue/10 py-12">
       <div className="section-container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4">
             <Image
               src="/logo.svg"
               alt="WFS"
               width={40}
               height={40}
             />
-            <div>
-              <span className="font-bold text-gold-500">Wisdom Frontiers Society</span>
-            </div>
+            <span
+              className="font-bold text-neon-blue glow-text tracking-wider"
+              style={{ fontFamily: 'Orbitron, sans-serif' }}
+            >
+              Wisdom Frontiers Society
+            </span>
           </div>
 
           {/* Copyright */}
-          <p className="text-sm text-cream-500">
-            &copy; {currentYear} WFS. Exploring the infinite frontiers of wisdom.
+          <p
+            className="text-sm text-void-500 tracking-wider"
+            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+          >
+            &copy; {currentYear} WFS // Exploring infinite frontiers
           </p>
 
           {/* Social links */}
           <div className="flex items-center space-x-6">
             <a
               href="#"
-              className="text-cream-500 hover:text-gold-400 transition-colors"
+              className="text-void-500 hover:text-neon-blue transition-colors"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -42,7 +48,7 @@ export default function Footer() {
             </a>
             <a
               href="#"
-              className="text-cream-500 hover:text-gold-400 transition-colors"
+              className="text-void-500 hover:text-neon-blue transition-colors"
               aria-label="Twitter"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
