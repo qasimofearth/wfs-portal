@@ -58,7 +58,7 @@ body {
   }
 }
 
-/* Stars background */
+/* Stars background - enhanced */
 .stars-bg {
   background-image:
     radial-gradient(2px 2px at 20px 30px, white, transparent),
@@ -70,17 +70,31 @@ body {
     radial-gradient(1px 1px at 350px 200px, white, transparent),
     radial-gradient(1px 1px at 400px 50px, rgba(255,255,255,0.5), transparent),
     radial-gradient(2px 2px at 450px 180px, white, transparent),
-    radial-gradient(1px 1px at 500px 100px, rgba(255,255,255,0.8), transparent);
-  background-size: 550px 250px;
-  animation: stars-move 100s linear infinite;
+    radial-gradient(1px 1px at 500px 100px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 120px 200px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 280px 250px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 380px 280px, white, transparent),
+    radial-gradient(1px 1px at 520px 220px, rgba(255,255,255,0.7), transparent);
+  background-size: 550px 320px;
+  animation: stars-move 120s linear infinite;
 }
 
 @keyframes stars-move {
   from { background-position: 0 0; }
-  to { background-position: 550px 250px; }
+  to { background-position: 550px 320px; }
 }
 
-/* Orbit animation */
+/* 3D Orbit animation - realistic */
+@keyframes orbit-3d {
+  0% {
+    transform: rotateX(75deg) rotate(0deg);
+  }
+  100% {
+    transform: rotateX(75deg) rotate(360deg);
+  }
+}
+
+/* Legacy orbit animation */
 @keyframes orbit {
   from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
   to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
@@ -132,4 +146,77 @@ body {
 
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Slow pulse for sun */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: scale(1.2); }
+  50% { opacity: 0.7; transform: scale(1.4); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Slide up animation */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Radial gradient utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
+
+/* 3D perspective */
+.perspective-1500 {
+  perspective: 1500px;
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 168, 67, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 168, 67, 0.5);
 }

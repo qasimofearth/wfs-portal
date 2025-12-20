@@ -65,4 +65,14 @@ export const team: TeamMember[] = [
       twitter: 'https://twitter.com/qasimofearth',
     },
   },
+  {
+    id: 'luke-barrington',
+    name: 'Luke Barrington',
+    role: 'Co-Founder',
+    bio: 'AI/ML leader and PhD from UCSD. Founded Tomnod for crowdsourced satellite analysis. Led the Valley of the Khans project with 10K+ volunteers.',
+    links: {
+      website: 'http://lukebarrington.com/',
+      linkedin: 'https://www.linkedin.com/in/lukebarrington/',
+    },
+  },
 ]
