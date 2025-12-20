@@ -4,12 +4,15 @@ export interface Planet {
   symbol: string
   category: string
   description: string
-  color: string
+  orbitRadius: number
+  orbitSpeed: number // seconds per revolution (slower = higher number)
+  size: number
+  order: number
+  // Realistic planet appearance
+  gradient: string
   glowColor: string
-  orbitRadius: number // in pixels from center
-  orbitSpeed: number // seconds per revolution
-  size: number // planet size in pixels
-  order: number // orbital order from sun
+  hasRings?: boolean
+  ringColor?: string
 }
 
 export const planets: Planet[] = [
@@ -19,12 +22,12 @@ export const planets: Planet[] = [
     symbol: '☿',
     category: 'KNOWLEDGE',
     description: 'Learning, tools, thinking, communication',
-    color: '#B5B5B5',
-    glowColor: 'rgba(181, 181, 181, 0.4)',
-    orbitRadius: 80,
-    orbitSpeed: 8,
-    size: 20,
-    order: 1
+    orbitRadius: 85,
+    orbitSpeed: 25, // Slower
+    size: 18,
+    order: 1,
+    gradient: 'radial-gradient(circle at 30% 30%, #A0A0A0, #6B6B6B, #3D3D3D)',
+    glowColor: 'rgba(160, 160, 160, 0.3)',
   },
   {
     id: 'venus',
@@ -32,12 +35,12 @@ export const planets: Planet[] = [
     symbol: '♀',
     category: 'HEALTH',
     description: 'Body, mind, relationships, balance',
-    color: '#E6C87A',
-    glowColor: 'rgba(230, 200, 122, 0.4)',
     orbitRadius: 120,
-    orbitSpeed: 12,
+    orbitSpeed: 35,
     size: 28,
-    order: 2
+    order: 2,
+    gradient: 'radial-gradient(circle at 30% 30%, #FFF8E7, #E8C87A, #C4A055)',
+    glowColor: 'rgba(232, 200, 122, 0.4)',
   },
   {
     id: 'earth',
@@ -45,12 +48,12 @@ export const planets: Planet[] = [
     symbol: '🌍',
     category: 'LIFE',
     description: 'Habits, community, daily living',
-    color: '#6B93D6',
-    glowColor: 'rgba(107, 147, 214, 0.4)',
     orbitRadius: 160,
-    orbitSpeed: 16,
+    orbitSpeed: 45,
     size: 30,
-    order: 3
+    order: 3,
+    gradient: 'radial-gradient(circle at 30% 30%, #87CEEB, #4A90C2, #2E5A7E), radial-gradient(circle at 60% 50%, #3CB371 0%, transparent 30%), radial-gradient(circle at 40% 70%, #228B22 0%, transparent 25%)',
+    glowColor: 'rgba(74, 144, 194, 0.4)',
   },
   {
     id: 'mars',
@@ -58,12 +61,12 @@ export const planets: Planet[] = [
     symbol: '♂',
     category: 'ACTION',
     description: 'Tasks, energy, discipline',
-    color: '#C1440E',
-    glowColor: 'rgba(193, 68, 14, 0.4)',
-    orbitRadius: 200,
-    orbitSpeed: 20,
+    orbitRadius: 205,
+    orbitSpeed: 55,
     size: 24,
-    order: 4
+    order: 4,
+    gradient: 'radial-gradient(circle at 30% 30%, #E07850, #C1440E, #8B2500)',
+    glowColor: 'rgba(193, 68, 14, 0.4)',
   },
   {
     id: 'jupiter',
@@ -71,12 +74,12 @@ export const planets: Planet[] = [
     symbol: '♃',
     category: 'WEALTH',
     description: 'Finance, growth, opportunity',
-    color: '#D4A574',
+    orbitRadius: 265,
+    orbitSpeed: 70,
+    size: 52,
+    order: 5,
+    gradient: 'radial-gradient(circle at 30% 30%, #F5DEB3, #D4A574, #A67B4C), repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(139,90,43,0.3) 8px, rgba(139,90,43,0.3) 12px)',
     glowColor: 'rgba(212, 165, 116, 0.4)',
-    orbitRadius: 260,
-    orbitSpeed: 28,
-    size: 50,
-    order: 5
   },
   {
     id: 'saturn',
@@ -84,12 +87,14 @@ export const planets: Planet[] = [
     symbol: '♄',
     category: 'STRUCTURE',
     description: 'Time, planning, responsibility',
-    color: '#E8D4A8',
+    orbitRadius: 330,
+    orbitSpeed: 85,
+    size: 46,
+    order: 6,
+    gradient: 'radial-gradient(circle at 30% 30%, #FDF5E6, #E8D4A8, #C4A868)',
     glowColor: 'rgba(232, 212, 168, 0.4)',
-    orbitRadius: 320,
-    orbitSpeed: 36,
-    size: 44,
-    order: 6
+    hasRings: true,
+    ringColor: 'rgba(210, 180, 140, 0.6)',
   },
   {
     id: 'uranus',
@@ -97,12 +102,12 @@ export const planets: Planet[] = [
     symbol: '♅',
     category: 'INNOVATION',
     description: 'New ideas, future thinking',
-    color: '#7BC8E8',
+    orbitRadius: 385,
+    orbitSpeed: 100,
+    size: 38,
+    order: 7,
+    gradient: 'radial-gradient(circle at 30% 30%, #E0FFFF, #7BC8E8, #4AA8C4)',
     glowColor: 'rgba(123, 200, 232, 0.4)',
-    orbitRadius: 370,
-    orbitSpeed: 44,
-    size: 36,
-    order: 7
   },
   {
     id: 'neptune',
@@ -110,12 +115,12 @@ export const planets: Planet[] = [
     symbol: '♆',
     category: 'WISDOM',
     description: 'Literature, meaning, spirituality',
-    color: '#5B7FD4',
-    glowColor: 'rgba(91, 127, 212, 0.4)',
-    orbitRadius: 420,
-    orbitSpeed: 52,
-    size: 34,
-    order: 8
+    orbitRadius: 435,
+    orbitSpeed: 115,
+    size: 36,
+    order: 8,
+    gradient: 'radial-gradient(circle at 30% 30%, #6495ED, #4169E1, #2E4A8E)',
+    glowColor: 'rgba(65, 105, 225, 0.4)',
   },
   {
     id: 'pluto',
@@ -123,12 +128,12 @@ export const planets: Planet[] = [
     symbol: '♇',
     category: 'CHANGE',
     description: 'Transformation, healing, truth',
-    color: '#9B7B8E',
-    glowColor: 'rgba(155, 123, 142, 0.4)',
-    orbitRadius: 460,
-    orbitSpeed: 60,
-    size: 16,
-    order: 9
+    orbitRadius: 475,
+    orbitSpeed: 130,
+    size: 14,
+    order: 9,
+    gradient: 'radial-gradient(circle at 30% 30%, #D2B48C, #9B7B6E, #6B5344)',
+    glowColor: 'rgba(155, 123, 110, 0.3)',
   }
 ]
 
@@ -138,7 +143,7 @@ export const sun = {
   symbol: '☀️',
   category: 'PURPOSE',
   description: 'Home, identity, direction',
-  color: '#FDB813',
-  glowColor: 'rgba(253, 184, 19, 0.6)',
-  size: 80
+  size: 70,
+  gradient: 'radial-gradient(circle at 30% 30%, #FFF8DC, #FFD700, #FFA500, #FF6600)',
+  glowColor: 'rgba(255, 165, 0, 0.6)',
 }

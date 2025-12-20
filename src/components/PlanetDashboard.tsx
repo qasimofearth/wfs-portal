@@ -44,39 +44,42 @@ export default function PlanetDashboard({ planetId, onClose }: PlanetDashboardPr
         <div className="max-w-4xl mx-auto">
           {/* Planet Header */}
           <div className="text-center mb-16 animate-slide-up">
-            {/* Planet visual */}
+            {/* Planet visual - realistic appearance */}
             <div
-              className="w-28 h-28 mx-auto mb-8 rounded-full relative"
+              className="w-32 h-32 mx-auto mb-8 rounded-full relative"
               style={{
-                background: `radial-gradient(circle at 30% 30%,
-                  ${planet.color}ff,
-                  ${planet.color}dd,
-                  ${planet.color}88
-                )`,
-                boxShadow: `0 0 60px ${planet.glowColor}, 0 0 120px ${planet.glowColor}`,
+                background: planet.gradient,
+                boxShadow: `0 0 60px ${planet.glowColor}, 0 0 120px ${planet.glowColor}, inset -15px -10px 30px rgba(0,0,0,0.4)`,
               }}
             >
-              {/* Planet icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white/90 text-4xl">{planet.symbol}</span>
-              </div>
-
               {/* Saturn rings */}
-              {planet.id === 'saturn' && (
-                <div
-                  className="absolute top-1/2 left-1/2 pointer-events-none"
-                  style={{
-                    width: '200%',
-                    height: '50%',
-                    border: '4px solid rgba(232, 212, 168, 0.4)',
-                    borderRadius: '50%',
-                    transform: 'translate(-50%, -50%) rotateX(70deg)',
-                  }}
-                />
+              {planet.hasRings && (
+                <>
+                  <div
+                    className="absolute top-1/2 left-1/2 pointer-events-none"
+                    style={{
+                      width: '220%',
+                      height: '50%',
+                      border: `4px solid ${planet.ringColor}`,
+                      borderRadius: '50%',
+                      transform: 'translate(-50%, -50%) rotateX(70deg)',
+                    }}
+                  />
+                  <div
+                    className="absolute top-1/2 left-1/2 pointer-events-none"
+                    style={{
+                      width: '180%',
+                      height: '40%',
+                      border: `3px solid ${planet.ringColor?.replace('0.6', '0.3')}`,
+                      borderRadius: '50%',
+                      transform: 'translate(-50%, -50%) rotateX(70deg)',
+                    }}
+                  />
+                </>
               )}
             </div>
 
-            <h1 className="heading-display text-5xl md:text-6xl mb-4" style={{ color: planet.color }}>
+            <h1 className="heading-display text-5xl md:text-6xl mb-4 text-white">
               {planet.name}
             </h1>
             <p className="text-mono text-sm text-primary-gold uppercase tracking-widest mb-4">
@@ -109,8 +112,8 @@ export default function PlanetDashboard({ planetId, onClose }: PlanetDashboardPr
                         <div
                           className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 transition-transform group-hover:scale-110"
                           style={{
-                            background: `linear-gradient(135deg, ${planet.color}33, ${planet.color}11)`,
-                            border: `1px solid ${planet.color}44`,
+                            background: `linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02))`,
+                            border: `1px solid rgba(255,255,255,0.1)`,
                           }}
                         >
                           {app.icon}
@@ -153,8 +156,8 @@ export default function PlanetDashboard({ planetId, onClose }: PlanetDashboardPr
                         <div
                           className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
                           style={{
-                            background: `linear-gradient(135deg, ${planet.color}22, ${planet.color}08)`,
-                            border: `1px solid ${planet.color}22`,
+                            background: `linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))`,
+                            border: `1px solid rgba(255,255,255,0.05)`,
                           }}
                         >
                           {app.icon}
@@ -192,32 +195,28 @@ export default function PlanetDashboard({ planetId, onClose }: PlanetDashboardPr
             <h3 className="heading-display text-lg text-stone-500 text-center mb-8">
               Explore Other Worlds
             </h3>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {planets
                 .filter(p => p.id !== planetId)
                 .map((p) => (
                   <button
                     key={p.id}
                     onClick={() => {
-                      // Update URL without full page reload would require more routing
-                      // For now, we'll just trigger a re-render via parent
                       onClose()
                       setTimeout(() => {
                         const event = new CustomEvent('navigateToPlanet', { detail: p.id })
                         window.dispatchEvent(event)
                       }, 100)
                     }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 hover:border-primary-gold/30 transition-all group"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 hover:border-white/30 transition-all group"
                   >
                     <div
-                      className="w-6 h-6 rounded-full flex items-center justify-center text-xs"
+                      className="w-5 h-5 rounded-full"
                       style={{
-                        background: `radial-gradient(circle at 30% 30%, ${p.color}ee, ${p.color}88)`,
-                        boxShadow: `0 0 10px ${p.glowColor}`,
+                        background: p.gradient,
+                        boxShadow: `0 0 8px ${p.glowColor}`,
                       }}
-                    >
-                      {p.symbol}
-                    </div>
+                    />
                     <span className="text-mono text-xs text-stone-400 group-hover:text-white transition-colors">
                       {p.name}
                     </span>

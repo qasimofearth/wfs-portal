@@ -41,20 +41,18 @@ export default function SolarSystem() {
       {/* Solar System Container */}
       <div
         className="relative w-full flex items-center justify-center overflow-hidden"
-        style={{ height: '700px' }}
+        style={{ height: '750px' }}
       >
         {/* 3D tilted plane for orbits */}
         <div
           className="absolute inset-0 flex items-center justify-center"
-          style={{
-            perspective: '800px',
-          }}
+          style={{ perspective: '1200px' }}
         >
           <div
             className="relative"
             style={{
-              width: '960px',
-              height: '960px',
+              width: '1000px',
+              height: '1000px',
               transformStyle: 'preserve-3d',
               transform: 'rotateX(60deg)',
             }}
@@ -63,7 +61,7 @@ export default function SolarSystem() {
             {planets.map((planet) => (
               <div
                 key={`orbit-${planet.id}`}
-                className="absolute rounded-full border border-white/10"
+                className="absolute rounded-full border border-white/[0.08]"
                 style={{
                   width: planet.orbitRadius * 2,
                   height: planet.orbitRadius * 2,
@@ -79,6 +77,9 @@ export default function SolarSystem() {
             {planets.map((planet) => {
               const apps = getAppsByPlanet(planet.id)
               const liveApps = apps.filter(a => a.status === 'live').length
+              const isHovered = hoveredPlanet === planet.id
+              // Larger click area
+              const clickAreaSize = Math.max(planet.size + 30, 50)
 
               return (
                 <div
@@ -92,88 +93,98 @@ export default function SolarSystem() {
                     marginLeft: -planet.orbitRadius,
                     marginTop: -planet.orbitRadius,
                     animation: `spin ${planet.orbitSpeed}s linear infinite`,
-                    animationDelay: `-${planet.order * 3}s`,
+                    animationDelay: `-${planet.order * 8}s`,
                   }}
                 >
-                  {/* Planet at the edge */}
+                  {/* Click area - larger invisible target */}
                   <div
                     className="absolute cursor-pointer"
                     style={{
-                      right: -planet.size / 2,
+                      right: -clickAreaSize / 2,
                       top: '50%',
-                      marginTop: -planet.size / 2,
-                      width: planet.size,
-                      height: planet.size,
-                      // Counter-rotate to keep upright, and tilt back to face viewer
+                      marginTop: -clickAreaSize / 2,
+                      width: clickAreaSize,
+                      height: clickAreaSize,
+                      // Counter-rotate to face viewer
                       animation: `counter-spin-tilt ${planet.orbitSpeed}s linear infinite`,
-                      animationDelay: `-${planet.order * 3}s`,
+                      animationDelay: `-${planet.order * 8}s`,
                     }}
                     onClick={() => handlePlanetClick(planet.id)}
                     onMouseEnter={() => setHoveredPlanet(planet.id)}
                     onMouseLeave={() => setHoveredPlanet(null)}
                   >
+                    {/* Planet sphere - centered in click area */}
                     <div
-                      className={`w-full h-full rounded-full transition-transform duration-200 ${
-                        hoveredPlanet === planet.id ? 'scale-125' : ''
-                      }`}
+                      className="absolute left-1/2 top-1/2 rounded-full transition-transform duration-300"
                       style={{
-                        background: `radial-gradient(circle at 30% 30%,
-                          ${planet.color},
-                          ${planet.color}bb,
-                          ${planet.color}66
-                        )`,
-                        boxShadow: hoveredPlanet === planet.id
-                          ? `0 0 30px ${planet.glowColor}, 0 0 60px ${planet.glowColor}`
-                          : `0 0 15px ${planet.glowColor}`,
+                        width: planet.size,
+                        height: planet.size,
+                        marginLeft: -planet.size / 2,
+                        marginTop: -planet.size / 2,
+                        background: planet.gradient,
+                        boxShadow: isHovered
+                          ? `0 0 ${planet.size}px ${planet.glowColor}, 0 0 ${planet.size * 2}px ${planet.glowColor}, inset -${planet.size * 0.15}px -${planet.size * 0.1}px ${planet.size * 0.3}px rgba(0,0,0,0.5)`
+                          : `0 0 ${planet.size * 0.5}px ${planet.glowColor}, inset -${planet.size * 0.15}px -${planet.size * 0.1}px ${planet.size * 0.3}px rgba(0,0,0,0.4)`,
+                        transform: isHovered ? 'scale(1.3)' : 'scale(1)',
                       }}
                     >
-                      {/* Planet symbol */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span
-                          className="text-white/90"
-                          style={{ fontSize: planet.size * 0.45 }}
-                        >
-                          {planet.symbol}
-                        </span>
-                      </div>
-
                       {/* Saturn rings */}
-                      {planet.id === 'saturn' && (
-                        <div
-                          className="absolute top-1/2 left-1/2 pointer-events-none"
-                          style={{
-                            width: planet.size * 1.7,
-                            height: planet.size * 0.3,
-                            marginLeft: -planet.size * 0.85,
-                            marginTop: -planet.size * 0.15,
-                            border: '2px solid rgba(232, 212, 168, 0.4)',
-                            borderRadius: '50%',
-                            transform: 'rotateX(80deg)',
-                          }}
-                        />
+                      {planet.hasRings && (
+                        <>
+                          <div
+                            className="absolute pointer-events-none"
+                            style={{
+                              width: planet.size * 2,
+                              height: planet.size * 0.5,
+                              left: '50%',
+                              top: '50%',
+                              marginLeft: -planet.size,
+                              marginTop: -planet.size * 0.25,
+                              border: `3px solid ${planet.ringColor}`,
+                              borderRadius: '50%',
+                              transform: 'rotateX(75deg)',
+                            }}
+                          />
+                          <div
+                            className="absolute pointer-events-none"
+                            style={{
+                              width: planet.size * 1.6,
+                              height: planet.size * 0.4,
+                              left: '50%',
+                              top: '50%',
+                              marginLeft: -planet.size * 0.8,
+                              marginTop: -planet.size * 0.2,
+                              border: `2px solid ${planet.ringColor?.replace('0.6', '0.4')}`,
+                              borderRadius: '50%',
+                              transform: 'rotateX(75deg)',
+                            }}
+                          />
+                        </>
                       )}
 
                       {/* Live indicator */}
                       {liveApps > 0 && (
                         <div
-                          className="absolute -top-1 -right-1 bg-green-500 rounded-full animate-pulse border border-black flex items-center justify-center"
-                          style={{ width: 14, height: 14 }}
+                          className="absolute bg-green-500 rounded-full animate-pulse border-2 border-black flex items-center justify-center"
+                          style={{
+                            width: 16,
+                            height: 16,
+                            top: -4,
+                            right: -4,
+                          }}
                         >
-                          <span className="text-[7px] text-white font-bold">{liveApps}</span>
+                          <span className="text-[8px] text-white font-bold">{liveApps}</span>
                         </div>
                       )}
                     </div>
 
                     {/* Hover label */}
-                    {hoveredPlanet === planet.id && (
+                    {isHovered && (
                       <div
-                        className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap"
-                        style={{ top: planet.size + 6 }}
+                        className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap z-50"
+                        style={{ top: clickAreaSize / 2 + planet.size / 2 + 12 }}
                       >
-                        <span
-                          className="text-mono text-[9px] uppercase tracking-wider px-2 py-0.5 bg-black/80 rounded"
-                          style={{ color: planet.color }}
-                        >
+                        <span className="text-mono text-[10px] uppercase tracking-wider px-3 py-1 bg-black/90 rounded-full border border-white/10 text-white">
                           {planet.name}
                         </span>
                       </div>
@@ -197,11 +208,11 @@ export default function SolarSystem() {
             style={{
               width: sun.size,
               height: sun.size,
-              background: `radial-gradient(circle at 30% 30%, #FFF7E0, ${sun.color}, #E67E00)`,
+              background: sun.gradient,
               boxShadow: `
                 0 0 40px ${sun.glowColor},
                 0 0 80px ${sun.glowColor},
-                0 0 120px rgba(253, 184, 19, 0.4)
+                0 0 120px rgba(255, 165, 0, 0.3)
               `,
             }}
           >
@@ -211,11 +222,11 @@ export default function SolarSystem() {
               style={{
                 background: `radial-gradient(circle, transparent 40%, ${sun.glowColor} 100%)`,
                 transform: 'scale(1.5)',
-                opacity: 0.3,
+                opacity: 0.4,
               }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-stone-900 font-bold text-sm text-mono tracking-wider">WFS</span>
+              <span className="text-stone-900/80 font-bold text-xs text-mono tracking-wider">WFS</span>
             </div>
           </div>
         </div>
@@ -226,8 +237,16 @@ export default function SolarSystem() {
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 pointer-events-none animate-fade-in">
           <div className="card-glass px-8 py-5 text-center backdrop-blur-xl border border-white/10">
             <div className="flex items-center justify-center gap-3 mb-2">
-              <span className="text-3xl">{hoveredData.symbol}</span>
-              <h3 className="heading-display text-2xl" style={{ color: hoveredData.color }}>
+              <div
+                className="rounded-full"
+                style={{
+                  width: 24,
+                  height: 24,
+                  background: hoveredData.gradient,
+                  boxShadow: `0 0 10px ${hoveredData.glowColor}`,
+                }}
+              />
+              <h3 className="heading-display text-2xl text-white">
                 {hoveredData.name}
               </h3>
             </div>
@@ -249,8 +268,16 @@ export default function SolarSystem() {
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 pointer-events-none animate-fade-in">
           <div className="card-glass px-8 py-5 text-center backdrop-blur-xl border border-white/10">
             <div className="flex items-center justify-center gap-3 mb-2">
-              <span className="text-3xl">{sun.symbol}</span>
-              <h3 className="heading-display text-2xl" style={{ color: sun.color }}>
+              <div
+                className="rounded-full"
+                style={{
+                  width: 24,
+                  height: 24,
+                  background: sun.gradient,
+                  boxShadow: `0 0 10px ${sun.glowColor}`,
+                }}
+              />
+              <h3 className="heading-display text-2xl text-white">
                 {sun.name}
               </h3>
             </div>
@@ -288,11 +315,11 @@ export default function SolarSystem() {
               <div
                 className="w-32 h-32 mx-auto mb-8 rounded-full animate-pulse-slow"
                 style={{
-                  background: `radial-gradient(circle at 30% 30%, #FFF7E0, ${sun.color}, #E67E00)`,
-                  boxShadow: `0 0 80px ${sun.glowColor}, 0 0 160px ${sun.glowColor}`,
+                  background: sun.gradient,
+                  boxShadow: `0 0 60px ${sun.glowColor}, 0 0 120px ${sun.glowColor}`,
                 }}
               />
-              <h2 className="heading-display text-5xl mb-4" style={{ color: sun.color }}>
+              <h2 className="heading-display text-5xl mb-4 text-orange-400">
                 Purpose
               </h2>
               <p className="text-body text-xl text-stone-300 mb-8">
