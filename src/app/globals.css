@@ -84,39 +84,16 @@ body {
   to { background-position: 550px 320px; }
 }
 
-/* 3D Orbit animation - realistic */
-@keyframes orbit-3d {
-  0% {
-    transform: rotateX(75deg) rotate(0deg);
-  }
-  100% {
-    transform: rotateX(75deg) rotate(360deg);
-  }
+/* Orbital spin - rotates the orbit container around center */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Legacy orbit animation */
-@keyframes orbit {
-  from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
-}
-
-.orbit-path {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.planet {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: center center;
-  animation: orbit var(--orbit-speed) linear infinite;
-  margin-left: calc(var(--orbit-radius) * -1);
-  margin-top: -20px;
+/* Counter-spin with tilt correction - keeps planets facing viewer */
+@keyframes counter-spin-tilt {
+  from { transform: rotateX(-60deg) rotate(0deg); }
+  to { transform: rotateX(-60deg) rotate(-360deg); }
 }
 
 /* Glow effects */
